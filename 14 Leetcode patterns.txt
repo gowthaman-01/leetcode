@@ -1,0 +1,18 @@
+Sliding window 
+- Maximum sum subarray of size ‘K’ (easy)
+- Longest substring with ‘K’ distinct characters (medium)
+- String anagrams (hard)
+
+Two pointers 
+- Squaring a sorted array (easy)
+- Triplets that sum to zero (medium)
+- Comparing strings that contain backspaces (medium)
+
+Fast and slow pointers 
+- Linked List Cycle (easy)
+- Palindrome Linked List (medium)
+- Cycle in a Circular Array (hard)
+
+Merge Intervals 
+- Intervals Intersection (medium)
+- Maximum CPU Load (hard)
