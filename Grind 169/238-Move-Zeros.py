@@ -1,4 +1,4 @@
-def moveZeroes(self, nums: List[int]) -> None:
+def moveZeroes(nums):
     c, n = 0, 0
     while n < len(nums):
         if nums[c] == 0:
