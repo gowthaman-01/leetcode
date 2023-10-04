@@ -7,12 +7,12 @@ public:
             if (map.count(c)) {
                 st.push(c);
             } else {
-                if (!st.size() || c != map[st.top()]) {
+                if (st.empty() || c != map[st.top()]) {
                     return false; 
                 }
                 st.pop();
             }
         }
-        return !st.size();
+        return st.empty();
     }
 };
