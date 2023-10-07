@@ -6,13 +6,10 @@ public:
             map[c]++;
         }
         for (char c: ransomNote) {
-            if (!map.count(c)) {
+            if (map[c] == 0) {
                 return false;
             }
             map[c]--;
-            if (!map[c]) {
-                map.erase(c);
-            }
         }
         return true;
     }
