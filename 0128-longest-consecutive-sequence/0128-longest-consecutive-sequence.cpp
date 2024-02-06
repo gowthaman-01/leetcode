@@ -10,10 +10,10 @@ public:
             if (set.count(num - 1)) {
                 continue;
             }
-            int cur = num; int count = 0; 
-            while (set.count(cur)) {
+            int count = 0; 
+            while (set.count(num)) {
                 count++; 
-                cur++;
+                num++;
                 longest = max(longest, count);
             }
         }
