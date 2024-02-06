@@ -4,7 +4,7 @@ public:
         unordered_map<string, vector<string>> map; 
         vector<vector<string>> res; 
         
-        for (string s: strs) {
+        for (string &s: strs) {
             vector<int> count(26, 0); 
             string key = "";
             for (char c: s) {
@@ -20,8 +20,8 @@ public:
             }
         }
         
-        for (pair<string, vector<string>> p: map) {
-            res.push_back(p.second);
+        for (auto &p: map) {
+            res.push_back(move(p.second));
         }
         return res;
     }
