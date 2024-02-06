@@ -6,12 +6,13 @@ public:
             map[c]++;
         }
         for (char c: t) {
-            if (!map.count(c)) {
+            if (map.count(c)) {
+                map[c]--;
+                if (map[c] == 0) {
+                    map.erase(c);
+                }
+            } else {
                 return false;
-            }
-            map[c]--;
-            if (!map[c]) {
-                map.erase(c);
             }
         }
         return map.empty();
