@@ -24,12 +24,11 @@ public:
     
     // Returns list of perfect squares that are lesser than n.
     vector<int> getSquares(int n) {
-        int a = 1; int b = 1; // b = a ^ 2 
+        int a = 1;
         vector<int> squares; 
-        while (b <= n) {
-            squares.push_back(b);
+        while (a * a <= n) {
+            squares.push_back(a * a);
             a++;
-            b = pow(a, 2);
         } 
         return squares;
     }
