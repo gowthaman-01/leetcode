@@ -2,14 +2,14 @@ class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         std::unordered_map<std::string, std::vector<std::string>> keyToAnagrams;
-        std::vector<std::vector<std::string>> groupAnagramsList;
         
-        for (std::string str: strs) {
+        for (const std::string &str: strs) {
             keyToAnagrams[getKey(str)].push_back(str);
         }
         
-        for (auto p: keyToAnagrams) {
-            groupAnagramsList.push_back(p.second);
+        std::vector<std::vector<std::string>> groupAnagramsList;
+        for (auto &p: keyToAnagrams) {
+            groupAnagramsList.push_back(std::move(p.second));
         }
         
         return groupAnagramsList;
@@ -29,4 +29,3 @@ public:
         return key;
     }
 };
-
