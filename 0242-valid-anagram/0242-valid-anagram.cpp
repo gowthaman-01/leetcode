@@ -9,7 +9,6 @@ public:
             charMap[c]++;
         }
         for (char c: t) {
-            cout << charMap[c] << endl;
             if (!charMap.count(c) || charMap[c] == 0) {
                 return false;
             } else {
