@@ -6,7 +6,7 @@ public:
             if (set.count(num)) {
                 return true;
             } else {
-                set.insert(num);
+                set.emplace(num);
             }
         }
         return false;
