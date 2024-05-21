@@ -35,7 +35,9 @@ public:
                 int pivotIndex = uniqueNums.size() - 1;
                 swapIndex++;
             }
-
         }
+
+        // Code should never reach here
+        return {}
     }
 };
