@@ -2,34 +2,19 @@ class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
         int product = 1; 
-        int zeroCount = 0;
-        int zeroIndex = 0;
+        std::vector<int> output(nums.size(), 0);
         
-        for (int i = 0; i < nums.size(); i++) {
-            if (nums[i] == 0) {
-                zeroIndex = i;
-                zeroCount++;
-            } else {
-                product *= nums[i];
-            }
+        for (int i = nums.size() - 1; i >= 0; i--) {
+            output[i] = product; 
+            product *= nums[i];
         }
         
-        if (zeroCount > 1) {
-            return std::vector<int>(nums.size(), 0);
+        product = nums[0];
+        for (int i = 1; i < nums.size(); i++) {
+            output[i] *= product;
+            product *= nums[i];
         }
         
-        for (int i = 0; i < nums.size(); i++) {
-            if (zeroCount) {
-                if (i == zeroIndex) {
-                    nums[i] = product; 
-                } else {
-                    nums[i] = 0;
-                }
-            } else {
-               nums[i] = product / nums[i]; 
-            }
-        }
-        
-        return nums;
+        return output;
     }
 };
