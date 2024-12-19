@@ -1,20 +1,24 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
+        int max_length = 0;
+
         std::unordered_set<int> unique_nums(nums.begin(), nums.end());
-        int max_count = 0;
-        for (int num: nums) {
+        for (const int num: unique_nums) {
             if (unique_nums.count(num - 1)) {
                 continue;
             }
-            int count = 0;
-            while (unique_nums.count(num)) {
-                count++;
-                num++;
+
+            int cur_length = 0;
+            int cur_num = num;
+            while (unique_nums.count(cur_num)) {
+                cur_length++;
+                cur_num++;
             }
-            max_count = std::max(max_count, count);
+
+            max_length = std::max(max_length, cur_length);
         }
 
-        return max_count;
+        return max_length;
     }
 };
