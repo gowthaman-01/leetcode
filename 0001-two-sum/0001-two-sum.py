@@ -3,10 +3,8 @@ class Solution:
         num_to_index = {}
         
         for i, num in enumerate(nums):
-            other = target - num
-            if other in num_to_index:
-                return [i, num_to_index[other]]
-            else:
-                num_to_index[num] = i
-        
+            if (complement := target - num) in num_to_index:
+                return [i, num_to_index[complement]]
+            num_to_index[num] = i
+
         return []
