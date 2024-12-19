@@ -2,11 +2,7 @@ class Codec:
     def encode(self, strs: List[str]) -> str:
         """Encodes a list of strings to a single string.
         """
-        encoded_string = ""
-        for s in strs:
-            encoded_string += str(len(s)) + "/" + s
-
-        return encoded_string
+        return "".join(f"{len(s)}/{s}" for s in strs)
 
     def decode(self, s: str) -> List[str]:
         """Decodes a single string to a list of strings.
@@ -15,16 +11,13 @@ class Codec:
         pos = 0
 
         while pos < len(s):
-            length_string = ""
-            while s[pos] != "/":
-                length_string += s[pos]
-                pos += 1       
-            length = int(length_string)
-            pos += 1      
-            decoded_strings.append(s[pos: pos + length])
-            pos += length
-
+            slash = s.find("/", pos)
+            string_length = int(s[pos: slash])
+            decoded_strings.append(s[slash + 1: slash + string_length + 1])
+            pos = slash + string_length + 1
+        
         return decoded_strings
+
         
 
 
