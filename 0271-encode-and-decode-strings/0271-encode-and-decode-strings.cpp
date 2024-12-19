@@ -1,10 +1,13 @@
 class Codec {
 public:
+
     // Encodes a list of strings to a single string.
     string encode(vector<string>& strs) {
         std::string encoded_string = "";
-        for (std::string& str: strs) {
-            encoded_string += std::to_string(str.length()) + "/" + str;
+        for (const std::string& str: strs) {
+            encoded_string.append(std::to_string(str.length()))
+                          .append("/")
+                          .append(str);
         }
 
         return encoded_string;
@@ -12,25 +15,17 @@ public:
 
     // Decodes a single string to a list of strings.
     vector<string> decode(string s) {
-        std::vector<std::string> decoded_strings;   
+        std::vector<std::string> decoded_strings;
         size_t pos = 0;
-        
-        while (pos < s.length()) {
-            std::string length_string = "";
-            while (s[pos] != '/') {
-                length_string += s[pos++];
-            }
-            int length = std::stoi(length_string);
-            pos++;
 
-            std::string str = "";
-            while (length--) {
-                str += s[pos++];
-            }
-            decoded_strings.push_back(str);
+        while (pos < s.size()) {
+            size_t slash = s.find("/", pos);
+            size_t string_length = std::stoi(s.substr(pos, slash - pos));
+            decoded_strings.push_back(s.substr(slash + 1, string_length));
+            pos = slash + string_length + 1;
         }
-    
-        return decoded_strings;  
+
+        return decoded_strings;
     }
 };
 
