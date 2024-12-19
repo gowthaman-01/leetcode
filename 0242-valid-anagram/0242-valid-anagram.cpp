@@ -5,19 +5,16 @@ public:
             return false;
         }
 
-        int count[26] = {0};
-
+        std::array<int, 26> count = {0};
         for (int i = 0; i < s.length(); i++) {
-            count[s[i] - 'a']++;
-            count[t[i] - 'a']--;
+            count[s[i] - 'a'] += 1;
+            count[t[i] - 'a'] -= 1;
         }
 
-        for (int i = 0; i < 26; i++) {
-            if (count[i]) {
-                return false;
-            }
+        for (int c: count) {
+            if (c) return false;
         }
-        
+
         return true;
     }
 };
